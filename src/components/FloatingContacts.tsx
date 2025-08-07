@@ -19,7 +19,7 @@ const FloatingContacts = () => {
   }, [hasShownPopup]);
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "919876543210"; // Replace with your WhatsApp number
+    const phoneNumber = "916372611728"; // Updated to match your number
     const message = "Hi! I'm interested in OPSC preparation courses from Odisha Preps.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -27,7 +27,7 @@ const FloatingContacts = () => {
   };
 
   const handlePhoneClick = () => {
-    window.location.href = "tel:+919876543210"; // Replace with your phone number
+    window.location.href = "tel:+916372611728"; // Updated to match your number
   };
 
   const handleTelegramClick = () => {

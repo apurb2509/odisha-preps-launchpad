@@ -1,7 +1,25 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Users, Award } from 'lucide-react';
+import { MessageCircle, Phone, Send, Award } from 'lucide-react';
+import govtEmblem from '@/assets/govt-emblem.png';
 
 const HeroSection = () => {
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "916372611728"; // From your reference image
+    const message = "Hi! I'm interested in OPSC preparation courses from Odisha Preps.";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handlePhoneClick = () => {
+    window.location.href = "tel:+916372611728";
+  };
+
+  const handleTelegramClick = () => {
+    const telegramUsername = "odishapreps";
+    const telegramUrl = `https://t.me/${telegramUsername}`;
+    window.open(telegramUrl, '_blank');
+  };
+
   return (
     <section className="relative min-h-screen bg-hero-bg overflow-hidden">
       {/* Background Pattern */}
@@ -19,66 +37,83 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-32 pb-20">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full text-primary-foreground/80 text-sm mb-8 animate-fade-in">
-            <Award className="w-4 h-4 mr-2" />
-            #1 Platform for OPSC Preparation
+          {/* Government Emblem */}
+          <div className="flex justify-center mb-8 animate-fade-in">
+            <div className="relative">
+              <img 
+                src={govtEmblem} 
+                alt="Government of Odisha Emblem" 
+                className="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-hero-glow/20 to-transparent rounded-full blur-xl"></div>
+            </div>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
-            Master Your
-            <span className="block text-transparent bg-gradient-to-r from-primary to-hero-glow bg-clip-text">
-              OPSC Journey
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground mb-6 animate-fade-in">
+            Welcome to Odisha Preps
+            <span className="block text-2xl md:text-3xl text-transparent bg-gradient-to-r from-primary to-hero-glow bg-clip-text mt-2">
+              Odisha's #1 Destination for Civil Services Aspirants!
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-primary-foreground/70 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in">
-            Comprehensive preparation platform for Odisha Public Service Commission exams. 
-            Join thousands of successful candidates who trusted Odisha Preps.
+          {/* Description */}
+          <p className="text-lg md:text-xl text-primary-foreground/80 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in">
+            The platform that has become the one stop solution for mastering the evolving demands of 
+            the OPSC OCS exam with deep, analytical insights. Backed by supreme content, we're the 
+            most comprehensive and affordable platform aiming to transform way to prepare for Odisha 
+            civil service examination
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 animate-glow"
-            >
-              Start Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-primary/30 text-primary-foreground hover:bg-primary/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm"
-            >
-              Explore Courses
-            </Button>
+          {/* Contact Section */}
+          <div className="bg-primary-foreground/5 backdrop-blur-sm border border-primary/20 rounded-3xl p-8 mb-12 animate-fade-in">
+            <h2 className="text-2xl md:text-3xl font-bold text-yellow-400 mb-8">
+              For Any Enquiry or Doubt, Reach us !!
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {/* WhatsApp Button */}
+              <Button
+                onClick={handleWhatsAppClick}
+                className="bg-green-600 hover:bg-green-700 text-white h-16 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 text-lg font-semibold"
+              >
+                <MessageCircle className="w-6 h-6" />
+                <span>Any thing in mind ? Chat with Us</span>
+              </Button>
+
+              {/* Phone Button */}
+              <Button
+                onClick={handlePhoneClick}
+                className="bg-blue-600 hover:bg-blue-700 text-white h-16 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 text-lg font-semibold"
+              >
+                <Phone className="w-6 h-6" />
+                <span>Call us Directly (+91 6372611728)</span>
+              </Button>
+
+              {/* Telegram Button */}
+              <Button
+                onClick={handleTelegramClick}
+                className="bg-sky-500 hover:bg-sky-600 text-white h-16 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 text-lg font-semibold"
+              >
+                <Send className="w-6 h-6" />
+                <span>Join Telegram Group for Updates</span>
+              </Button>
+            </div>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto animate-fade-in">
             <div className="text-center p-6 bg-primary-foreground/5 backdrop-blur-sm border border-primary/10 rounded-2xl">
-              <div className="flex items-center justify-center mb-3">
-                <BookOpen className="w-8 h-8 text-primary" />
-              </div>
               <div className="text-3xl font-bold text-primary-foreground mb-2">500+</div>
               <div className="text-primary-foreground/70">Practice Tests</div>
             </div>
             
             <div className="text-center p-6 bg-primary-foreground/5 backdrop-blur-sm border border-primary/10 rounded-2xl">
-              <div className="flex items-center justify-center mb-3">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
               <div className="text-3xl font-bold text-primary-foreground mb-2">50K+</div>
               <div className="text-primary-foreground/70">Active Students</div>
             </div>
             
             <div className="text-center p-6 bg-primary-foreground/5 backdrop-blur-sm border border-primary/10 rounded-2xl">
-              <div className="flex items-center justify-center mb-3">
-                <Award className="w-8 h-8 text-primary" />
-              </div>
               <div className="text-3xl font-bold text-primary-foreground mb-2">95%</div>
               <div className="text-primary-foreground/70">Success Rate</div>
             </div>
