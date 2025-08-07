@@ -7,21 +7,21 @@ const DownloadSection = () => {
       platform: 'Google Play Store',
       icon: <Smartphone className="w-8 h-8" />,
       description: 'Get it on',
-      url: '#', // Replace with your actual Play Store URL
+      url: ' https://play.google.com/store/apps/details?id=co.bran.xbkgg ', // Replace with your actual Play Store URL
       bgColor: 'bg-green-600 hover:bg-green-700',
     },
     {
       platform: 'App Store',
       icon: <Apple className="w-8 h-8" />,
       description: 'Download on the',
-      url: '#', // Replace with your actual App Store URL
+      url: 'https://apps.apple.com/in/app/my-coaching-by-appx/id1662307591', // Replace with your actual App Store URL
       bgColor: 'bg-gray-800 hover:bg-gray-900',
     },
     {
       platform: 'Windows',
       icon: <Monitor className="w-8 h-8" />,
       description: 'Available for',
-      url: '#', // Replace with your actual Windows app URL
+      url: ' https://appx-content-v2.classx.co.in/windows/Odisha_Preps_Setup_0.0.2.exe', // Replace with your actual Windows app URL
       bgColor: 'bg-blue-600 hover:bg-blue-700',
     },
     {
