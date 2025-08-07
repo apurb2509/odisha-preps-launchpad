@@ -268,7 +268,7 @@ const HeroSection = () => {
                       </button>
                       <button onClick={handleTelegramClick} className="w-full bg-sky-500/90 hover:bg-sky-600 text-white h-16 rounded-xl shadow-lg hover:shadow-sky-500/40 transition-all duration-300 flex items-center justify-center px-4 space-x-3 text-md font-semibold hover:scale-105 transform">
                           <img src={telegramIcon} alt="Telegram" className="w-7 h-7 flex-shrink-0" />
-                          <span>Join Updates</span>
+                          <span>Join for Updates</span>
                       </button>
                   </div>
               </div>
