@@ -327,12 +327,15 @@ const HeroSection = () => {
                   </div>
               </div>
 
-              <div className="flex flex-col items-center animate-fade-in cursor-pointer group" onClick={() => alert('Navigate to Free Resources page!')}>
-                  <img src={giftIcon} alt="Free Resources" className="w-24 h-24 md:w-28 md:h-28 mb-2 transform group-hover:scale-110 transition-transform duration-300" />
-                  <p className="text-lg font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
-                      Access Free OPSC Resources
-                  </p>
-              </div>
+              <div 
+              className="flex flex-col items-center animate-fade-in cursor-pointer group" 
+              onClick={() => window.open('https://youtube.com/playlist?list=PLp1pMnEljrbLL7cAns4iRZztGm6YcchFE&si=6B3iZnJSFnT8Uq34', '_blank')}
+          >
+              <img src={giftIcon} alt="Free Resources" className="w-24 h-24 md:w-28 md:h-28 mb-2 transform group-hover:scale-110 transition-transform duration-300" />
+              <p className="text-lg font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors">
+                  Access Free OPSC Resources
+              </p>
+          </div>
           </div>
           
           <FloatingContacts />
