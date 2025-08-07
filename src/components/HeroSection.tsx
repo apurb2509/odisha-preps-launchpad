@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 
 // Import all the necessary assets from your 'src/assets' folder using relative paths
 import opscEmblem from '../assets/opsc-emblem.png';
@@ -13,6 +14,102 @@ import phoneIcon from '../assets/phone.png';
 import telegramIcon from '../assets/telegram.png';
 
 const HeroSection = () => {
+    const mountRef = useRef(null);
+
+    // --- Background Animation Logic ---
+    useEffect(() => {
+        // Guard against running in non-browser environments
+        if (typeof window === 'undefined') return;
+
+        const currentMount = mountRef.current;
+
+        // --- Scene Setup ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        currentMount.appendChild(renderer.domElement);
+        camera.position.z = 50;
+
+        // --- Particle System ---
+        const particleCount = 5000;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const color1 = new THREE.Color("#0047AB"); // Cobalt Blue
+        const color2 = new THREE.Color("#4169E1"); // Royal Blue
+        const color3 = new THREE.Color("#87CEEB"); // Sky Blue
+
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 150;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 150;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
+
+            const randomColor = new THREE.Color().lerpColors(color1, color3, Math.random());
+            colors[i * 3] = randomColor.r;
+            colors[i * 3 + 1] = randomColor.g;
+            colors[i * 3 + 2] = randomColor.b;
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.15,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // --- Mouse Interaction ---
+        const mouse = new THREE.Vector2();
+        const handleMouseMove = (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // --- Animation Loop ---
+        let animationFrameId;
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particles.rotation.y = elapsedTime * 0.05;
+            particles.rotation.x = elapsedTime * 0.02;
+
+            camera.position.x += (mouse.x * 5 - camera.position.x) * 0.05;
+            camera.position.y += (-mouse.y * 5 - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+            animationFrameId = requestAnimationFrame(animate);
+        };
+        animate();
+
+        // --- Responsive Handling ---
+        const handleResize = () => {
+            camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+        };
+        window.addEventListener('resize', handleResize);
+
+        // --- Cleanup function ---
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('mousemove', handleMouseMove);
+            cancelAnimationFrame(animationFrameId);
+            currentMount.removeChild(renderer.domElement);
+        };
+    }, []);
+
+
   // --- CLICK HANDLERS (No changes here) ---
   const handleWhatsAppClick = () => {
     const phoneNumber = "916372611728";
@@ -32,25 +129,36 @@ const HeroSection = () => {
 
   return (
     <section 
-      className="relative min-h-screen bg-gray-900 text-white overflow-hidden py-12 md:py-20"
-      style={{ backgroundColor: '#0a192f' }} 
+      className="relative min-h-screen text-white overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
+      {/* --- Animated Background Mount Point --- */}
+      <div
+        ref={mountRef}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0, // Behind the content
+          backgroundColor: '#0a192f',
+        }}
+      />
+      
+      {/* --- Content Container (Remains on top) --- */}
+      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center py-12 md:py-20">
 
-      {/* --- Content Container --- */}
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
-
-        {/* 1. Enlarged Layered OPSC Emblem (Logo Removed) */}
+        {/* 1. Enlarged Layered OPSC Emblem */}
         <div className="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center mb-12 mt-14 animate-fade-in">
           <img 
             src={opscEmblemBack} 
             alt="OPSC Emblem Background" 
-            className="absolute w-full h-full animate-spin-slow" // Spinning background
+            className="absolute w-full h-full animate-spin-slow"
           />
           <img 
             src={opscEmblem} 
             alt="OPSC Emblem" 
-            className="relative w-10/11 h-10/11 mt-6" // Emblem on top
+            className="relative w-11/12 h-11/12 mt-6" // Corrected Tailwind class
           />
         </div>
 
@@ -68,7 +176,7 @@ const HeroSection = () => {
         </p>
 
         {/* 4. Contact Section */}
-        <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-2xl mb-10 animate-fade-in">
+        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-2xl mb-10 animate-fade-in">
           <h2 className="text-xl md:text-2xl font-bold text-yellow-400 mb-6">
             For Any Enquiry or Doubt, Reach us !!
           </h2>
@@ -104,7 +212,7 @@ const HeroSection = () => {
         </div>
 
         {/* 5. Platform Availability Section */}
-        <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-6 w-full max-w-2xl mb-10 animate-fade-in">
+        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 w-full max-w-2xl mb-10 animate-fade-in">
           <h3 className="text-lg md:text-xl font-bold text-white mb-6">
             We are available on all Platforms
           </h3>
