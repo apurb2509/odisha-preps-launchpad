@@ -11,8 +11,7 @@ import Footer from "./components/Footer";
 // Import your page components
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-// Assuming you have a PrivacyPolicy page, add the import if it exists
-// import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy"; // Import the PrivacyPolicy component
 
 // Create a client for React Query
 const queryClient = new QueryClient();
@@ -34,8 +33,8 @@ const App = () => (
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* Add a route for your privacy policy if the page exists */}
-              {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
+              {/* Added the route for the privacy policy page */}
+              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
               
               {/* This is a catch-all route for any page not found */}
               <Route path="*" element={<NotFound />} />
