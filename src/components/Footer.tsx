@@ -26,10 +26,10 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center text-center">
           {/* Brand Section */}
-          <div className="flex items-center space-x-3 mb-4">
-            <img src={logo} alt="Odisha Preps Logo" className="w-10 h-10" />
-            <span className="text-2xl font-bold">Odisha Preps</span>
-          </div>
+          <a href="/" className="flex items-center space-x-3 mb-4">
+          <img src={logo} alt="Odisha Preps Logo" className="w-10 h-10" />
+          <span className="text-2xl font-bold">Odisha Preps</span>
+        </a>
           <p className="text-gray-400 mb-6 max-w-2xl">
             Your trusted partner for OPSC examination preparation. We provide comprehensive study materials, expert guidance, and proven strategies to help you succeed.
           </p>
@@ -66,11 +66,11 @@ const Footer = () => {
             <div className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Odisha Preps. All rights reserved.
             </div>
-            <div className="flex space-x-10 text-sm">
-            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">About Us</a>
-            <a href="/PrivacyPolicy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Disclaimer</a>
-            </div>
+            <div className="flex gap-x-12 text-sm">
+  <a href="/about" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">About Us</a>
+  <a href="/PrivacyPolicy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+  <a href="/disclaimer" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Disclaimer</a>
+</div>
           </div>
         </div>
       </div>
