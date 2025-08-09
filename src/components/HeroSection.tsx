@@ -330,93 +330,93 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="bg-gray-900/40 backdrop-blur-md border border-gray-700/50 rounded-2xl p-6 w-full max-w-3xl mb-12 animate-fade-in">
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
-            Accessible Across All Your Devices
-          </h3>
-          <div className="flex justify-around items-center flex-wrap gap-4">
-            <a
-              href="https://play.google.com/store/apps/details?id=co.bran.xbkgg "
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
+        <div id="download-app" className="bg-gray-900/40 backdrop-blur-md border border-gray-700/50 rounded-2xl p-6 w-full max-w-3xl mb-12 animate-fade-in">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
+          Accessible Across All Your Devices
+        </h3>
+        <div className="flex justify-around items-center flex-wrap gap-4">
+          <a
+            href="https://play.google.com/store/apps/details?id=co.bran.xbkgg "
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
+          >
+            <img
+              src={androidIcon}
+              alt="Android"
+              className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-sm text-gray-300 font-medium">Android</span>
+          </a>
+          <a
+            href="https://apps.apple.com/in/app/my-coaching-by-appx/id1662307591"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
+          >
+            <img
+              src={iosIcon}
+              alt="iOS"
+              className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-sm text-gray-300 font-medium">iOS</span>
+          </a>
+      
+          <div
+            ref={macOsRef}
+            className="relative flex flex-col items-center text-center w-20"
+          >
+            {/* Clickable Icon to toggle options */}
+            <button
+              onClick={() => setShowMacOptions(!showMacOptions)}
+              className="flex flex-col items-center space-y-2 group cursor-pointer"
             >
               <img
-                src={androidIcon}
-                alt="Android"
-                className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+                src={macIcon}
+                alt="Mac"
+                className="w-16 h-16 transition-transform duration-300 group-hover:scale-110"
               />
-              <span className="text-sm text-gray-300 font-medium">Android</span>
-            </a>
-            <a
-              href="https://apps.apple.com/in/app/my-coaching-by-appx/id1662307591"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
-            >
-              <img
-                src={iosIcon}
-                alt="iOS"
-                className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
-              />
-              <span className="text-sm text-gray-300 font-medium">iOS</span>
-            </a>
-
-            <div
-              ref={macOsRef}
-              className="relative flex flex-col items-center text-center w-20"
-            >
-              {/* Clickable Icon to toggle options */}
-              <button
-                onClick={() => setShowMacOptions(!showMacOptions)}
-                className="flex flex-col items-center space-y-2 group cursor-pointer"
-              >
-                <img
-                  src={macIcon}
-                  alt="Mac"
-                  className="w-16 h-16 transition-transform duration-300 group-hover:scale-110"
-                />
-                <span className="text-sm text-gray-300 font-medium">macOS</span>
-              </button>
-
-              {/* Conditionally rendered download links */}
-              {showMacOptions && (
-                <div className="absolute top-full mt-2 w-max bg-slate-800 rounded-lg shadow-lg p-2 flex flex-row space-x-2 animate-fade-in z-20">
-                  <a
-                    href="https://appxcontent.kaxa.in/windows/Odisha_Preps-0.0.1-arm64.dmg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-white bg-slate-700 hover:bg-slate-600 rounded px-3 py-2 transition-colors"
-                  >
-                    Apple Chip
-                  </a>
-                  <a
-                    href="https://appxcontent.kaxa.in/windows/Odisha_Preps-0.0.1.dmg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-white bg-slate-700 hover:bg-slate-600 rounded px-3 py-2 transition-colors"
-                  >
-                    Intel Chip
-                  </a>
-                </div>
-              )}
-            </div>
-
-            <a
-              href="https://appx-content-v2.classx.co.in/windows/Odisha_Preps_Setup_0.0.2.exe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
-            >
-              <img
-                src={windowsIcon}
-                alt="Windows"
-                className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
-              />
-              <span className="text-sm text-gray-300 font-medium">Windows</span>
-            </a>
+              <span className="text-sm text-gray-300 font-medium">macOS</span>
+            </button>
+      
+            {/* Conditionally rendered download links */}
+            {showMacOptions && (
+              <div className="absolute top-full mt-2 w-max bg-slate-800 rounded-lg shadow-lg p-2 flex flex-row space-x-2 animate-fade-in z-20">
+                <a
+                  href="https://appxcontent.kaxa.in/windows/Odisha_Preps-0.0.1-arm64.dmg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white bg-slate-700 hover:bg-slate-600 rounded px-3 py-2 transition-colors"
+                >
+                  Apple Chip
+                </a>
+                <a
+                  href="https://appxcontent.kaxa.in/windows/Odisha_Preps-0.0.1.dmg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white bg-slate-700 hover:bg-slate-600 rounded px-3 py-2 transition-colors"
+                >
+                  Intel Chip
+                </a>
+              </div>
+            )}
           </div>
+      
+          <a
+            href="https://appx-content-v2.classx.co.in/windows/Odisha_Preps_Setup_0.0.2.exe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center space-y-2 text-center w-20 group cursor-pointer"
+          >
+            <img
+              src={windowsIcon}
+              alt="Windows"
+              className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-sm text-gray-300 font-medium">Windows</span>
+          </a>
         </div>
+      </div>
 
         <div
           id="free-resources"
