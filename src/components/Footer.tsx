@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Clock } from 'lucide-react';
+
+// NOTE: Ensure these asset paths are correct relative to your component's location.
 import logo from '../assets/logo.png';
 import whatsappIcon from '../assets/whatsapp.png';
 import telegramIcon from '../assets/telegram.png';
@@ -7,6 +10,7 @@ import youtubeIcon from '../assets/youtube-icon.png';
 import gmailIcon from '../assets/gmail-logo.png';
 import phoneIcon from '../assets/phone.png';
 
+// --- Footer Component ---
 const Footer = () => {
   const contactLinks = [
     { name: "WhatsApp", icon: whatsappIcon, url: "https://wa.me/916372611728" },
@@ -17,7 +21,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="footer" className="bg-[#020617]/80 text-white border-t border-slate-700/50 backdrop-blur-lg" style={{ fontFamily: "'Poppins', sans-serif" }}>
+    // The background color is now solid to ensure it matches the header exactly.
+    <footer id="footer" className="bg-[#0e1628] text-white border-t border-slate-700/50 backdrop-blur-lg" style={{ fontFamily: "'Poppins', sans-serif" }}>
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center text-center">
           {/* Brand Section */}
@@ -59,11 +64,11 @@ const Footer = () => {
         <div className="border-t border-slate-700/50 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2025 Odisha Preps. All rights reserved.
+              © {new Date().getFullYear()} Odisha Preps. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+              <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
