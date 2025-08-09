@@ -116,3 +116,24 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Add this for the letter drop animation */
+@keyframes letter-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-letter-drop {
+  display: inline-block; /* Necessary for transforms to work */
+  opacity: 0; /* Start invisible */
+  animation-name: letter-drop;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards; /* Keep the final state */
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}

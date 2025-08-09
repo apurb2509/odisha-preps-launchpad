@@ -219,6 +219,8 @@ const HeroSection = () => {
       const telegramUrl = `https://t.me/odishapreps`;
       window.open(telegramUrl, '_blank');
   };
+  
+  const titleText = "Odisha Preps";
 
   return (
       <section className="relative min-h-screen text-white overflow-hidden font-sans" style={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -242,9 +244,18 @@ const HeroSection = () => {
                   />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 animate-fade-in tracking-tight">
-                  Odisha Preps
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight">
+                {titleText.split("").map((char, index) => (
+                  <span 
+                    key={index}
+                    className="animate-letter-drop"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
               </h1>
+              
               <p className="text-xl sm:text-2xl md:text-3xl text-yellow-400 font-semibold mb-8 animate-fade-in" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>
                   Odisha's No. 1 Destination for Civil Services Aspirants!
               </p>
@@ -344,21 +355,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-// Add this to your global CSS file (e.g., globals.css)
-/*
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
-}
-*/
