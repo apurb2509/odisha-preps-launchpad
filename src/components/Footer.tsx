@@ -66,9 +66,10 @@ const Footer = () => {
             <div className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Odisha Preps. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm">
+            <div className="flex space-x-10 text-sm">
+            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">About Us</a>
             <a href="/PrivacyPolicy" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+            <a href="/terms-of-service" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">Disclaimer</a>
             </div>
           </div>
         </div>
