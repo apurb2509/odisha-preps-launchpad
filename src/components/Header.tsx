@@ -21,7 +21,7 @@ const Header = () => {
 
   // Navigation items
   const navItems = [
-    { name: 'Home', href: '#' },
+    { name: 'Home', href: '#home' },
     { name: 'Free Resources', href: '#free-resources' },
     { name: 'Download App', href: '#download-app' },
     { name: 'About Us', href: '#footer' },

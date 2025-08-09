@@ -248,7 +248,7 @@ const HeroSection = () => {
         style={{ backgroundColor: "#020617" }}
       />
 
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center py-12 md:py-20">
+      <div id="home" className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center py-12 md:py-20">
         <div className="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center mb-8 animate-fade-in">
           <img
             src={opscEmblemBack}
