@@ -35,7 +35,7 @@ const App = () => (
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/disclaimer" element={<Disclaimer />} /> {/* Added the route for the Disclaimer page */}
               
